@@ -1,0 +1,1 @@
+//this will handle the generation of the qr code 
