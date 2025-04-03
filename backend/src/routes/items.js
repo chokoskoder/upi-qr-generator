@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const dotenv = require('dotenv');
 const { items } = require('../models/items');
-const { Types } = require("mongoose");
 
 dotenv.config();
 
@@ -38,6 +37,16 @@ router.get("/find/:id", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+router.get("/show" , async (req , res)=>{
+    try{
+        const all_items = await items.find();
+        res.json(all_items);
+    }
+    catch(err){
+        res.status(400).json({message : "an error occured please check the console"});
+    }
+})
 
 
 

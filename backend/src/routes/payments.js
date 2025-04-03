@@ -12,13 +12,13 @@ dotenv.config();
 const router = express.Router();
 console.log(process.env.UPI_ID);
 
-router.post("/generate-qr/:id" , async(req , res)=>{
+router.post("/generate-qr" , async(req , res)=>{
 
     // console.log("we are here atleast ");
-    const id = Number(req.params.id);
+    const id =  Number(req.query.id);
 
     try{
-        const item_info = await items.findOne({itemId : id}).lean();
+        const item_info = await items.findOne({itemId : id});
         console.log(item_info);
         const upiId = process.env.UPI_ID;
         if(item_info){
